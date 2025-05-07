@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 18th Birthday My Love!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --secondary-color: #ffebee;
+            --accent-color: #c2185b;
+            --gold-color: #ffd700;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--secondary-color);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: var(--accent-color);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle, #ffcdd2 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,235,238,0.5));
+            background-size: 20px 20px, 100% 100%;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-color);
+            animation: fadeIn 2s, float 3s ease-in-out infinite;
+            background: linear-gradient(45deg, var(--primary-color), #ff9800);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-top: 20px;
+        }
+        
+        h2 {
+            font-size: 2em;
+            margin-top: 0;
+            color: var(--accent-color);
+            animation: slideIn 1.5s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .birthday-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.2);
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            animation: cardEntrance 1s;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .birthday-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #e91e63, #ff9800, #ffeb3b, #4caf50, #2196f3, #9c27b0, #e91e63);
+            background-size: 400% 100%;
+            animation: gradient 8s linear infinite;
+            z-index: 1;
+        }
+        
+        .photo-container {
+            width: 250px;
+            height: 250px;
+            margin: 20px auto;
+            border-radius: 50%;
+            background-color: #f8bbd0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: 8px solid var(--primary-color);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: all 0.5s;
+            position: relative;
+            animation: pulse 2s infinite;
+            z-index: 2;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .photo-container:hover img {
+            transform: scale(1.05);
+        }
+        
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            animation: fadeIn 1s;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 15px 15px 60px 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: inline-block;
+            transform: rotate(2deg);
+            transition: all 0.3s;
+            position: relative;
+            border-radius: 2px;
+        }
+        
+        .polaroid:nth-child(even) {
+            transform: rotate(-2deg);
+        }
+        
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .polaroid::after {
+            content: attr(data-caption);
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            color: var(--accent-color);
+            font-size: 1.2em;
+        }
+        
+        .gallery-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 2px;
+            object-fit: cover;
+            border: 1px solid #eee;
+        }
+        
+        p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeInParagraphs 1s forwards;
+            text-align: center;
+            color: #555;
+        }
+        
+        p:nth-child(1) { animation-delay: 0.3s; }
+        p:nth-child(2) { animation-delay: 0.6s; }
+        p:nth-child(3) { animation-delay: 0.9s; }
+        p:nth-child(4) { animation-delay: 1.2s; }
+        p:nth-child(5) { animation-delay: 1.5s; }
+        p:nth-child(6) { animation-delay: 1.8s; }
+        
+        .signature {
+            font-style: italic;
+            margin-top: 40px;
+            font-size: 1.5em;
+            font-family: 'Dancing Script', cursive;
+            transform: rotate(-3deg);
+            display: inline-block;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 1s 3.5s forwards;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .hearts {
+            font-size: 2em;
+            color: var(--primary-color);
+            margin: 30px 0;
+            animation: pulse 1.5s infinite, float 4s ease-in-out infinite;
+            text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+        
+        @keyframes cardEntrance {
+            from { 
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to { 
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            from { 
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to { 
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInParagraphs {
+            from { 
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Floating hearts */
+        .floating-heart {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 4s linear forwards;
+            font-size: 20px;
+            color: var(--primary-color);
+            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        }
+        
+        @keyframes floatUp {
+            0% { 
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Music control */
+        .music-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, var(--primary-color), #ff5722);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: all 0.3s;
+            font-size: 1.5em;
+            border: 2px solid white;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1) rotate(15deg);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Stars background */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.2; }
+            to { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+            padding: 20px;
+        }
+        
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <div class="hearts">💖 Happy 18th Birthday My Love! 💖</div>
+        <h1>Selamat Ulang Tahun!</h1>
+        <h2>Nur Najwa</h2>
+        
+        <div class="birthday-card">
+            <div class="photo-container" id="photo-container">
+                <img src="image/kue.png" alt="Birthday Cake">
+            </div>
+            
+            <p>Hari ini, 9 Mei 2025, adalah hari spesial untukmu!</p>
+            <p>Najwa, selamat ulang tahun yang ke-18!</p>
+            <p>Dari sekian banyak hari di dunia, hari ini spesial banget—karena hari ini kamu dilahirkan, dan buat aku, itu salah satu hal terbaik yang pernah terjadi di dunia ini</p>
+            <p>Terima kasih karena selalu jadi versi terbaik dari kamu: yang cantik, yang lembut, yang kuat, yang kadang GEDIKK tapi lucunya, cantiknya gak habis-habis.</p>
+            <p>Di umur baru ini, aku harap semua yang kamu impikan bisa selangkah lebih dekat. Semoga yang baik makin dekat, dan yang bikin kamu senyum makin sering datang.</p>
+            <p>Aku gak janji bisa jadi yang sempurna, tapi aku janji mau selalu ada. Menemani, mendoakan, dan mencintai kamu — di tiap versi kamu yang baru.</p>
+            
+            <div class="hearts">💝 WOPEUUUU 💝</div>
+            
+            <p>Happy birthday, Najwa. You're growing, glowing, and I'm so lucky to witness all of it.</p>
+            
+            <div class="photo-gallery" id="photoGallery">
+                <div class="polaroid" data-caption="My Beautiful Girl">
+                    <img src="image/foto%201.jpg" class="gallery-image" alt="Najwa 1">
+                </div>
+                <div class="polaroid" data-caption="Sweet Smile">
+                    <img src="image/foto%209.jpg" class="gallery-image" alt="Najwa 2">
+                </div>
+                <div class="polaroid" data-caption="Pure Beauty">
+                    <img src="image/foto%202.jpg" class="gallery-image" alt="Najwa 3">
+                </div>
+                <div class="polaroid" data-caption="Elegant">
+                    <img src="image/foto%203.jpg" class="gallery-image" alt="Najwa 4">
+                </div>
+                <div class="polaroid" data-caption="Gorgeous">
+                    <img src="image/foto%204.jpg" class="gallery-image" alt="Najwa 5">
+                </div>
+                <div class="polaroid" data-caption="Charming">
+                    <img src="image/foto%205.jpg" class="gallery-image" alt="Najwa 6">
+                </div>
+                <div class="polaroid" data-caption="Lovely">
+                    <img src="image/foto%206.jpg" class="gallery-image" alt="Najwa 7">
+                </div>
+                <div class="polaroid" data-caption="Irresistible">
+                    <img src="image/foto%207.jpg" class="gallery-image" alt="Najwa 8">
+                </div>
+                <div class="polaroid" data-caption="My Favorite">
+                    <img src="image/foto%208.jpg" class="gallery-image" alt="Najwa 9">
+                </div>
+                <div class="polaroid" data-caption="Kita Nanti hihi...">
+                    <img src="image/foto%2010.jpg" class="gallery-image" alt="Najwa 10">
+                </div>
+            </div>
+            
+            <div class="hearts">❤️ ❤️ ❤️</div>
+            
+            <div class="signature">
+                Always loving you<br>
+                <span id="loverName">M.Faqih Al Jumhuri</span>
+                <div style="font-size: 0.8em; margin-top: 5px;">Malaysia - Indonesia</div>
+            </div>
+        </div>
+        
+        <footer>
+            Dibuat dengan ❤️ khusus untuk Nur Najwa - Ulang tahun ke-18 - 9 Mei 2025<br>
+            <a href="index.html">&larr; Kembali ke halaman utama</a>
+        </footer>
+    </div>
+
+    <div class="music-control" id="musicControl" title="Putar Musik">
+        <i class="fas fa-music"></i>
+        <audio id="bgMusic" src="audio/birthday.mp3" loop></audio>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Buat bintang-bintang
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            star.style.width = Math.random() * 3 + 1 + 'px';
+            star.style.height = star.style.width;
+            starsContainer.appendChild(star);
+        }
+          // Cek apakah sudah hari ulang tahun
+          const birthday = new Date('2025-05-09T00:00:00');
+        if (new Date() < birthday) {
+            window.location.href = "index.html";
+        }
+
+        // Kontrol musik
+        const musicControl = document.getElementById('musicControl');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        musicControl.addEventListener('click', function() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                musicControl.title = 'Putar Musik';
+            } else {
+                bgMusic.play();
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                musicControl.title = 'Jeda Musik';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Set volume awal
+        bgMusic.volume = 0.3;
+
+        // Floating hearts
+        function createHearts() {
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+                heart.style.opacity = Math.random() * 0.5 + 0.5;
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        }
+
+        // Confetti saat halaman dibuka
+        window.onload = function() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            
+            createHearts();
+            setInterval(createHearts, 5000);
+        };
+
+        // Hearts ketika mouse bergerak
+        document.addEventListener('mousemove', function(e) {
+            if (Math.random() > 0.95) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = e.pageX + 'px';
+                heart.style.top = e.pageY + 'px';
+                heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+</html>

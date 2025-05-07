@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Najwa!</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffeef8;
+            margin: 0;
+            padding: 0;
+            background-image: radial-gradient(circle, #ffc1e3 1px, transparent 1px), linear-gradient(to bottom, #fff0f5, #ffeef8);
+            background-size: 25px 25px, 100% 100%;
+            color: #c2185b;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 12px 24px rgba(233, 30, 99, 0.3);
+            position: relative;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: linear-gradient(90deg, #e91e63, #ff9800, #ffeb3b, #4caf50, #2196f3, #9c27b0);
+            background-size: 400% 100%;
+            animation: gradient 10s linear infinite;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .countdown {
+            font-size: 20px;
+            margin: 20px 0;
+            background: #fce4ec;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #ad1457;
+            animation: pulse 2s infinite;
+        }
+
+        .message {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 25px 0;
+        }
+
+        .hearts {
+            font-size: 30px;
+            margin: 15px 0;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .gift-icon {
+            font-size: 90px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .gift-icon:hover {
+            transform: scale(1.1);
+            animation: heartbeat 1s infinite;
+        }
+
+        .gift-message {
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0;
+            height: 0;
+            transition: all 0.5s;
+            color: #e91e63;
+        }
+
+        .show-message {
+            opacity: 1;
+            height: auto;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>buat Nur Najwa 💕</h1>
+
+        <div class="countdown" id="countdown">
+            Menghitung waktu ke hari spesialmu...
+        </div>
+
+        <div class="message">
+            Haii kamu, YA KAMU LOHH CANTIKKU! Ini halaman kecil buat kamu yang manis itu hehe 😚<br>
+            Tapi kado rahasianya cuma bisa dibuka pas hari H ya! AHAHAAHA
+        </div>
+
+        <div class="hearts">💓 💕 💓</div>
+
+        <div class="gift-icon" id="giftIcon">🎁</div>
+        <div class="gift-message" id="giftMessage">Tunggu sampai ulang tahun kamu yaa buat buka kadonya~</div>
+    </div>
+
+    <footer>© 2025 Untuk Najwa dari seseorang yang paling sayang sama kamu</footer>
+
+    <script>
+        const birthday = new Date('2025-05-09T00:00:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = birthday - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').textContent = "🎉 Selamat Ulang Tahun, Najwa! 🎉";
+                document.getElementById('giftIcon').onclick = function() {
+                    window.location.href = "kado.html";
+                };
+                document.getElementById('giftMessage').textContent = "Klik kadonya buat lihat kejutan spesial 🎁";
+                document.getElementById('giftMessage').classList.add('show-message');
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent =
+                `${days} hari ${hours} jam ${minutes} menit ${seconds} detik menuju hari spesialmu!`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        document.getElementById('giftIcon').onclick = function() {
+            if (new Date() >= birthday) {
+                window.location.href = "kado.html";
+            } else {
+                document.getElementById('giftMessage').classList.add('show-message');
+                setTimeout(() => {
+                    document.getElementById('giftMessage').classList.remove('show-message');
+                }, 3000);
+
+                this.style.animation = 'none';
+                void this.offsetWidth;
+                this.style.animation = 'heartbeat 0.5s 3';
+            }
+        };
+    </script>
+</body>
+</html>
